@@ -18,7 +18,9 @@ export default function ProductFeed({ products }) {
           />
         ))}
 
-      <img className="md:col-span-full" src="https://links.papareact.com/dyz" alt="" />
+      <div className="md:col-span-full px-4">
+        <img className="" src="https://links.papareact.com/dyz" alt="" />
+      </div>
 
       <div className="md:col-span-2">
         {products

@@ -38,7 +38,7 @@ export default function Header() {
         {/* right btn */}
         <div className="text-white flex items-center text-xs gap-6 mx-6 whitespace-nowrap">
           <div className="link" onClick={!session ? () => signIn("google") : signOut}>
-            {session ? <p>Hello Austin Ofor</p> : <p>Sign In</p>}
+            {session ? <p>Hello {session.user.name}</p> : <p>Sign In</p>}
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
 

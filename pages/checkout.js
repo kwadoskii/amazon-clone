@@ -74,7 +74,7 @@ export default function CheckoutPage() {
 
           {/* right */}
           {items.length > 0 && (
-            <div className="bg-white flex flex-col p-5 shadow-md rounded-lg">
+            <div className="m-5 bg-white flex flex-col p-5 shadow-md rounded-lg md:m-0 md:mr-5">
               <div>
                 <h2 className="whitespace-nowrap">
                   {`Subtotal (${items.length} item${items.length > 1 ? "s" : ""})`}
@@ -87,7 +87,7 @@ export default function CheckoutPage() {
                 <button
                   disabled={!session}
                   onClick={createCheckoutSession}
-                  className={`button mt-2 ${
+                  className={`button mt-2 w-full ${
                     !session &&
                     `from-gray-300 to-gray-500 cursor-not-allowed text-gray-200 border-gray-200 focus:ring-gray-300 active:from-gray-500`
                   }`}

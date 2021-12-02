@@ -6,23 +6,8 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fulfillOrder = async (session) => {
-  console.log("fulfilling order");
-
-  // const User = mongoose.model("User", { email: String });
   await connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  // const Order =
-  //   models.Order ||
-  //   model("Order", {
-  //     order_id: { type: String },
-  //     amount: { type: Number },
-  //     amount_shipping: { type: Number },
-  //     images: { type: Array },
-  //     timestamp: { type: Date },
-  //     user: { type: String },
-  //   });
-
-  // const user = new User({ email: session.metadata.email });
   const order = new Order({
     order_id: session.id,
     amount: session.amount_total / 100,

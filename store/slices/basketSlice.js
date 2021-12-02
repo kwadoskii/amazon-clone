@@ -13,12 +13,11 @@ export const basketSplice = createSlice({
       state.items = [...state.items, action.payload];
     },
     removeFromBasket: (state, action) => {
-      // state.items = state.items.filter((i) => i.id !== action.payload.id);
       const index = state.items.findIndex((basketItem) => basketItem.id === action.payload.id);
 
       let newBasket = [...state.items];
 
-      index >= 0 ? newBasket.splice(index, 1) : console.warn(`${action.payload.id} does not exist`);
+      index >= 0 ? newBasket.splice(index, 1) : null;
 
       state.items = newBasket;
     },

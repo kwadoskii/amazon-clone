@@ -1,5 +1,6 @@
 import { buffer } from "micro";
 import { connect, disconnect, model, models } from "mongoose";
+import { Order } from "../../models/orders";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
@@ -10,16 +11,16 @@ const fulfillOrder = async (session) => {
   // const User = mongoose.model("User", { email: String });
   await connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  const Order =
-    models.Order ||
-    model("Order", {
-      order_id: { type: String },
-      amount: { type: Number },
-      amount_shipping: { type: Number },
-      images: { type: Array },
-      timestamp: { type: Date },
-      user: { type: String },
-    });
+  // const Order =
+  //   models.Order ||
+  //   model("Order", {
+  //     order_id: { type: String },
+  //     amount: { type: Number },
+  //     amount_shipping: { type: Number },
+  //     images: { type: Array },
+  //     timestamp: { type: Date },
+  //     user: { type: String },
+  //   });
 
   // const user = new User({ email: session.metadata.email });
   const order = new Order({
@@ -35,9 +36,9 @@ const fulfillOrder = async (session) => {
     .save()
     .then(() => console.log(`SUCCESS: Order ${session.id} had been added to the DB.`));
 
-  // return order
-  //   .save()
-  //   .then(() => console.log(`SUCCESS: Order ${session.id} had been added to the DB.`));
+  await disconnect();
+
+  return;
 };
 
 export default async (req, res) => {

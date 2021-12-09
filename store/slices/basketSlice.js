@@ -21,10 +21,13 @@ export const basketSplice = createSlice({
 
       state.items = newBasket;
     },
+    clearBasket: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addToBasket, removeFromBasket } = basketSplice.actions;
+export const { addToBasket, removeFromBasket, clearBasket } = basketSplice.actions;
 
 //selectors
 export const selectItems = (state) => state.basket.items;

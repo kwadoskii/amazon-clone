@@ -31,7 +31,7 @@ export default function CheckoutProduct({
 
     dispatch(addToBasket(product));
     toast.success("Item added to basket", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -46,7 +46,7 @@ export default function CheckoutProduct({
     dispatch(removeFromBasket({ id }));
 
     toast.error("Item removed from basket", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 3000,
       hideProgressBar: true,
       closeOnClick: true,

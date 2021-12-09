@@ -31,7 +31,7 @@ export default function Product({
 
     dispatch(addToBasket(product));
     toast.success("Item added to basket", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: true,
       closeOnClick: true,

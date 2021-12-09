@@ -2,9 +2,14 @@ import { CheckCircleIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/dist/client/router";
 import Header from "../components/Header";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { clearBasket } from "../store/slices/basketSlice";
 
 export default function success() {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  dispatch(clearBasket());
 
   return (
     <>

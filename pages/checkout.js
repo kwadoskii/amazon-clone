@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems, selectTotal } from "../store/slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
-import { useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/client";
 import Currency from "react-currency-formatter";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -85,11 +85,11 @@ export default function CheckoutPage() {
                 </h2>
 
                 <button
-                  disabled={!session}
-                  onClick={createCheckoutSession}
+                  // disabled={!session}
+                  onClick={session ? createCheckoutSession : () => signIn("google")}
                   className={`button mt-2 w-full ${
                     !session &&
-                    `from-gray-300 to-gray-500 cursor-not-allowed text-gray-200 border-gray-200 focus:ring-gray-300 active:from-gray-500`
+                    `from-gray-300 to-gray-500 text-gray-200 border-gray-200 focus:ring-gray-300 active:from-gray-500`
                   }`}
                 >
                   {!session ? "Sign in to checkout" : "Proceed to checkout"}

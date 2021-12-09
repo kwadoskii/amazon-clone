@@ -31,6 +31,7 @@ export default function Header() {
           <input
             type="text"
             className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
+            placeholder="Search for any product"
           />
           <SearchIcon className="h-12 p-4" />
         </div>
@@ -59,7 +60,7 @@ export default function Header() {
 
       {/* button nav */}
       <div className="flex items-center gap-3 p-2 pl-6 bg-amazon_blue-light text-white text-sm">
-        <p className="link flex items-center">
+        <p className="link flex items-center" onClick={() => router.push("/")}>
           <MenuIcon className="h-6 mr-1" />
           All
         </p>

@@ -2,6 +2,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { addToBasket, removeFromBasket } from "../store/slices/basketSlice";
 
 export default function CheckoutProduct({
@@ -27,11 +28,33 @@ export default function CheckoutProduct({
       category,
       hasPrime,
     };
+
     dispatch(addToBasket(product));
+    toast.success("Item added to basket", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket({ id }));
+
+    toast.error("Item removed from basket", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (

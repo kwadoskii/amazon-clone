@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../store/slices/basketSlice";
+import { toast } from "react-toastify";
 
 export default function Product({
   id,
@@ -30,6 +30,16 @@ export default function Product({
     };
 
     dispatch(addToBasket(product));
+    toast.success("Item added to basket", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   const exchangeRate = 567; //exchange rate to Naira from USD
@@ -48,7 +58,7 @@ export default function Product({
         {Array(Math.floor(rating))
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-300" />
+            <StarIcon key={i} className="h-5 text-yellow-300" />
           ))}
       </div>
 
